@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   pages: {
     tab: {
@@ -13,4 +15,17 @@ module.exports = {
       artifactFilename: ({ name, version }) => `${name}-v${version}.zip`,
     },
   },
+  configureWebpack: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer']
+      })
+    ],
+    // Webpack 4 compatible configuration
+    node: {
+      crypto: true,
+      stream: true,
+      Buffer: true
+    }
+  }
 };

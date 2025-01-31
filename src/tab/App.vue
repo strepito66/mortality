@@ -31,7 +31,11 @@ export default {
     renderAge: function () {
       const now = new Date();
       const duration = now - new Date(this.dob);
-      const years = duration / 31556900000;
+      var minutes = 1000 * 60;
+      var hours = minutes * 60;
+      var days = hours * 24;
+      var years1 = days * 365.25;
+      const years = duration / years1;
       const majorMinor = years.toFixed(9).toString().split(".");
 
       this.year = majorMinor[0];
